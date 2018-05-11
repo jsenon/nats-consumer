@@ -15,8 +15,8 @@ spec:
         image: docker.io/jsenon/nats-consumer:latest
         volumeMounts:
         # name must match the volume name below
-        - name: secret-ca
-          mountPath: /configs/certs/ca.pem
+        - name: tls-nats-client
+          mountPath: /configs/certs
         env:
         - name: MY_NATSBOOTSTRAP
           value: "nats://nats:4222"
@@ -24,6 +24,9 @@ spec:
           value: "kikoo"
         imagePullPolicy: Always
       volumes:
-      - name: secret-ca
+      - name: tls-nats-client
         secret:
-          secretName: ca.pem
+          secretName: tls-nats-client
+          items:
+          - key: ca.pem
+            path: ca.pem

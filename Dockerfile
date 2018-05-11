@@ -11,5 +11,4 @@ ENV MY_TIMESTAMP=false
 
 ADD nats-consumer /
 USER www-user
-
 CMD ["./nats-consumer"]

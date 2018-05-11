@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1 # for versions before 1.8.0 use apps/v1beta1
+kind: Deployment
+metadata:
+  name: nats-consumer
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nats-consumer
+        version: v.0.0.1
+    spec:
+      containers:
+      - name: nats-consumer
+        image: docker.io/jsenon/nats-consumer:latest
+        env:
+        - name: MY_NATSBOOTSTRAP
+          value: "123.123.123.123:9092"
+        - name: MY_TOPIC
+          value: "kikoo"
+        imagePullPolicy: Always

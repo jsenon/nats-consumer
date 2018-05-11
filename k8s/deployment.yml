@@ -15,7 +15,7 @@ spec:
         image: docker.io/jsenon/nats-consumer:latest
         env:
         - name: MY_NATSBOOTSTRAP
-          value: "123.123.123.123:9092"
+          value: "nats://nats:4222"
         - name: MY_TOPIC
           value: "kikoo"
         imagePullPolicy: Always

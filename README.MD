@@ -20,7 +20,7 @@ make
 
 Run Container
 ```
-docker run -d -e MY_NATSBOOTSTRAP="123.123.123.123:9092" -e MY_TOPIC="kikoo"  jsenon/nats-consumer:latest
+docker run -d -e MY_NATSBOOTSTRAP="nats://localhost:4222" -e MY_TOPIC="kikoo"  jsenon/nats-consumer:latest
 ```
 
 ## Run on K8S Cluster
@@ -32,7 +32,7 @@ kubectl apply -f k8s/deployment.yml
 
 ## Env
 
-- MY_NATSBOOTSTRAP: Define nats bootstrap server ie.127.0.0.1
+- MY_NATSBOOTSTRAP: Define nats bootstrap server (coma separated value) ie.nats://localhost:4222 
 - MY_TOPIC: Define topic to check ie.mytest
 
 ## Todo

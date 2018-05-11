@@ -31,7 +31,9 @@ func main() {
 	showTime := os.Getenv("MY_TIMESTAMP")
 	subj := os.Getenv("MY_TOPIC")
 
-	nc, err := nats.Connect(urls)
+	//nc, err = nats.Connect("tls://localhost:4443", nats.RootCAs("./configs/certs/ca.pem"))
+
+	nc, err := nats.Connect(urls, nats.RootCAs("/configs/certs/ca.pem"))
 	if err != nil {
 		logger.Error("Error nats connection:",
 			zap.Error(err),

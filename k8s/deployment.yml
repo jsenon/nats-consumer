@@ -13,9 +13,17 @@ spec:
       containers:
       - name: nats-consumer
         image: docker.io/jsenon/nats-consumer:latest
+        volumeMounts:
+        # name must match the volume name below
+        - name: secret-ca
+          mountPath: /configs/certs/ca.pem
         env:
         - name: MY_NATSBOOTSTRAP
           value: "nats://nats:4222"
         - name: MY_TOPIC
           value: "kikoo"
         imagePullPolicy: Always
+    volumes:
+    - name: secret-ca
+      secret:
+        secretName: ca.pem

@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/jsenon/natsconsumer.svg?style=svg)](https://circleci.com/gh/jsenon/nats-consumer)
+[![CircleCI](https://circleci.com/gh/jsenon/nats-consumer.svg?style=svg)](https://circleci.com/gh/jsenon/nats-consumer)
 [![Go Report Card](https://goreportcard.com/badge/github.com/jsenon/nats-consumer)](https://goreportcard.com/report/github.com/jsenon/nats-consumer)
 
 # Nats Consumer

@@ -33,7 +33,7 @@ func main() {
 
 	//nc, err = nats.Connect("tls://localhost:4443", nats.RootCAs("./configs/certs/ca.pem"))
 
-	nc, err := nats.Connect(urls, nats.RootCAs("/configs/certs/ca.pem"))
+	nc, err := nats.Connect(urls)
 	if err != nil {
 		logger.Error("Error nats connection:",
 			zap.Error(err),

@@ -23,7 +23,7 @@ spec:
         - name: MY_TOPIC
           value: "kikoo"
         imagePullPolicy: Always
-    volumes:
-    - name: secret-ca
-      secret:
-        secretName: ca.pem
+      volumes:
+      - name: secret-ca
+        secret:
+          secretName: ca.pem

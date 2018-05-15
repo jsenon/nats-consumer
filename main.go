@@ -41,6 +41,7 @@ func main() {
 			zap.Duration("backoff", time.Second),
 		)
 	}
+	defer nc.Close() // nolint: errcheck
 
 	i := 0
 

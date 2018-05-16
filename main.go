@@ -120,7 +120,7 @@ func main() { // nolint: gocyclo
 			)
 		}
 
-		log.Printf("Listening on [%s]\n", subj)
+		log.Printf("Listening on subject [%s]\n", subj)
 		if showTime != "false" {
 			log.SetFlags(log.LstdFlags)
 		}

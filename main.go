@@ -50,6 +50,13 @@ func main() { // nolint: gocyclo
 		zap.Strings("DiscoveredServers", nc.Servers()),
 	)
 
+	logger.Info("Dump Environment",
+		zap.String("queue", queue),
+		zap.String("urls", urls),
+		zap.String("subj", subj),
+		zap.String("showTime", showTime),
+	)
+
 	if queue != "" {
 		i := 0
 

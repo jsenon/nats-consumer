@@ -30,7 +30,7 @@ func main() { // nolint: gocyclo
 	urls := os.Getenv("MY_NATSBOOTSTRAP")
 	showTime := os.Getenv("MY_TIMESTAMP")
 	subj := os.Getenv("MY_TOPIC")
-	queue := os.Getenv("MY_QUEUE")
+	// queue := os.Getenv("MY_QUEUE")
 
 	//nc, err = nats.Connect("tls://localhost:4443", nats.RootCAs("./configs/certs/ca.pem"))
 

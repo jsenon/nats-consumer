@@ -50,83 +50,83 @@ func main() { // nolint: gocyclo
 		zap.Strings("DiscoveredServers", nc.Servers()),
 	)
 
-	if queue != "" {
-		i := 0
+	// if queue != "" {
+	// 	i := 0
 
-		_, err = nc.QueueSubscribe(subj, queue, func(msg *nats.Msg) {
-			i++
-			printMsg(msg, i)
-		})
-		if err != nil {
-			logger.Error("Error nats subscription:",
-				zap.Error(err),
-				zap.String("status", "ERROR"),
-			)
-		}
-		logger.Info("Subscription:",
-			zap.String("topic", subj),
-			zap.String("queue", queue),
+	// 	_, err = nc.QueueSubscribe(subj, queue, func(msg *nats.Msg) {
+	// 		i++
+	// 		printMsg(msg, i)
+	// 	})
+	// 	if err != nil {
+	// 		logger.Error("Error nats subscription:",
+	// 			zap.Error(err),
+	// 			zap.String("status", "ERROR"),
+	// 		)
+	// 	}
+	// 	logger.Info("Subscription:",
+	// 		zap.String("topic", subj),
+	// 		zap.String("queue", queue),
+	// 		zap.Duration("backoff", time.Second),
+	// 	)
+	// 	err = nc.Flush()
+	// 	if err != nil {
+	// 		logger.Error("Error nats flush:",
+	// 			zap.Error(err),
+	// 			zap.String("status", "ERROR"),
+	// 			zap.Duration("backoff", time.Second),
+	// 		)
+	// 	}
+
+	// 	if err = nc.LastError(); err != nil {
+	// 		logger.Error("Error nats:",
+	// 			zap.Error(err),
+	// 			zap.String("status", "ERROR"),
+	// 			zap.Duration("backoff", time.Second),
+	// 		)
+	// 	}
+
+	// 	log.Printf("Listening on [%s]\n", subj)
+	// 	if showTime != "false" {
+	// 		log.SetFlags(log.LstdFlags)
+	// 	}
+
+	// } else {
+	i := 0
+
+	_, err = nc.Subscribe(subj, func(msg *nats.Msg) {
+		i++
+		printMsg(msg, i)
+	})
+	if err != nil {
+		logger.Error("Error nats subscription:",
+			zap.Error(err),
+			zap.String("status", "ERROR"),
 			zap.Duration("backoff", time.Second),
 		)
-		err = nc.Flush()
-		if err != nil {
-			logger.Error("Error nats flush:",
-				zap.Error(err),
-				zap.String("status", "ERROR"),
-				zap.Duration("backoff", time.Second),
-			)
-		}
-
-		if err = nc.LastError(); err != nil {
-			logger.Error("Error nats:",
-				zap.Error(err),
-				zap.String("status", "ERROR"),
-				zap.Duration("backoff", time.Second),
-			)
-		}
-
-		log.Printf("Listening on [%s]\n", subj)
-		if showTime != "false" {
-			log.SetFlags(log.LstdFlags)
-		}
-
-	} else {
-		i := 0
-
-		_, err = nc.Subscribe(subj, func(msg *nats.Msg) {
-			i++
-			printMsg(msg, i)
-		})
-		if err != nil {
-			logger.Error("Error nats subscription:",
-				zap.Error(err),
-				zap.String("status", "ERROR"),
-				zap.Duration("backoff", time.Second),
-			)
-		}
-		err = nc.Flush()
-		if err != nil {
-			logger.Error("Error nats flush:",
-				zap.Error(err),
-				zap.String("status", "ERROR"),
-				zap.Duration("backoff", time.Second),
-			)
-		}
-
-		if err := nc.LastError(); err != nil {
-			logger.Error("Error nats:",
-				zap.Error(err),
-				zap.String("status", "ERROR"),
-				zap.Duration("backoff", time.Second),
-			)
-		}
-
-		log.Printf("Listening on [%s]\n", subj)
-		if showTime != "false" {
-			log.SetFlags(log.LstdFlags)
-		}
-
 	}
+	err = nc.Flush()
+	if err != nil {
+		logger.Error("Error nats flush:",
+			zap.Error(err),
+			zap.String("status", "ERROR"),
+			zap.Duration("backoff", time.Second),
+		)
+	}
+
+	if err := nc.LastError(); err != nil {
+		logger.Error("Error nats:",
+			zap.Error(err),
+			zap.String("status", "ERROR"),
+			zap.Duration("backoff", time.Second),
+		)
+	}
+
+	log.Printf("Listening on [%s]\n", subj)
+	if showTime != "false" {
+		log.SetFlags(log.LstdFlags)
+	}
+
+	// }
 
 	runtime.Goexit()
 }

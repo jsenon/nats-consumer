@@ -57,7 +57,7 @@ func main() { // nolint: gocyclo
 				zap.String("status", "ERROR"),
 			)
 		}
-		logger.Error("Subscription:",
+		logger.Info("Subscription:",
 			zap.String("topic", subj),
 			zap.String("queue", queue),
 			zap.Duration("backoff", time.Second),

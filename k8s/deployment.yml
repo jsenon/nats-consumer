@@ -22,6 +22,8 @@ spec:
           value: "nats://nats:4222"
         - name: MY_TOPIC
           value: "kikoo"
+        - name: MY_QUEUE
+          value: ""
         imagePullPolicy: Always
       volumes:
       - name: tls-nats-client

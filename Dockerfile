@@ -8,6 +8,7 @@ ENV MY_NATSBOOTSTRAP=127.0.0.1
 
 ENV MY_TOPIC=mytest
 ENV MY_TIMESTAMP=false
+ENV MY_QUEUE=""
 
 ADD nats-consumer /
 USER www-user

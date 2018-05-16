@@ -34,6 +34,7 @@ kubectl apply -f k8s/deployment.yml
 
 - MY_NATSBOOTSTRAP: Define nats bootstrap server (coma separated value) ie.nats://localhost:4222 
 - MY_TOPIC: Define topic to check ie.mytest
+- MY_QUEUE: If empty don't use queuing subscription, else define queue name
 
 ## Todo
 

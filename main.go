@@ -42,7 +42,7 @@ func main() { // nolint: gocyclo
 			zap.Duration("backoff", time.Second),
 		)
 	}
-	defer nc.Close() // nolint: errcheck
+	// defer nc.Close() // nolint: errcheck
 	logger.Info("Connected",
 		zap.String("target", urls),
 		zap.String("ServerID", nc.ConnectedServerId()),

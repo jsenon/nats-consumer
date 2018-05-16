@@ -84,8 +84,7 @@ func main() { // nolint: gocyclo
 				zap.Duration("backoff", time.Second),
 			)
 		}
-
-		log.Printf("Listening on [%s]\n", subj)
+		log.Printf("Listening on subject [%s] and queue [%s]\n", subj, queue)
 		if showTime != "false" {
 			log.SetFlags(log.LstdFlags)
 		}

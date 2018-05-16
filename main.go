@@ -43,6 +43,12 @@ func main() { // nolint: gocyclo
 		)
 	}
 	defer nc.Close() // nolint: errcheck
+	logger.Info("Connected",
+		zap.String("target", urls),
+		zap.String("ServerID", nc.ConnectedServerId()),
+		zap.String("ConnectedServer", nc.ConnectedUrl()),
+		zap.Strings("DiscoveredServers", nc.Servers()),
+	)
 
 	if queue != "" {
 		i := 0

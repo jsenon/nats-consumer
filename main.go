@@ -16,7 +16,7 @@ func printMsg(m *nats.Msg, i int) {
 	log.Printf("[#%d] Received on [%s]: '%s'\n", i, m.Subject, string(m.Data))
 }
 
-func main() {
+func main() { // nolint: gocyclo
 
 	logger, err := zap.NewProduction()
 	if err != nil {
@@ -71,7 +71,7 @@ func main() {
 			)
 		}
 
-		if err := nc.LastError(); err != nil {
+		if err = nc.LastError(); err != nil {
 			logger.Error("Error nats:",
 				zap.Error(err),
 				zap.String("status", "ERROR"),
